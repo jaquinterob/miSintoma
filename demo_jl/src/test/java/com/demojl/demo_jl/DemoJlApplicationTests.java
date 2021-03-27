@@ -9,7 +9,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
-@SpringBootTest(classes = DemoJlApplicationTests.class, 
+
+@SpringBootTest(classes = DemoJlApplication.class, 
 webEnvironment = WebEnvironment.RANDOM_PORT)
 
 
