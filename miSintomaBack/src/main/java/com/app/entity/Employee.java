@@ -12,14 +12,14 @@ public class Employee {
 	private @Id @GeneratedValue Long id;
 	private String firstName;
 	private String lastName;
-	private String description;
+	private String email;
 
-	private Employee() {}
+	public Employee() {}
 
-	public Employee(String firstName, String lastName, String description) {
+	public Employee(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.description = description;
+		this.email = email;
 	}
 
 	@Override
@@ -30,13 +30,13 @@ public class Employee {
 		return Objects.equals(id, employee.id) &&
 			Objects.equals(firstName, employee.firstName) &&
 			Objects.equals(lastName, employee.lastName) &&
-			Objects.equals(description, employee.description);
+			Objects.equals(email, employee.email);
 	}
 
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, firstName, lastName, description);
+		return Objects.hash(id, firstName, lastName, email);
 	}
 
 	public Long getId() {
@@ -63,12 +63,12 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getemail() {
+		return email;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setemail(String email) {
+		this.email = email;
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class Employee {
 			"id=" + id +
 			", firstName='" + firstName + '\'' +
 			", lastName='" + lastName + '\'' +
-			", description='" + description + '\'' +
+			", email='" + email + '\'' +
 			'}';
 	}
 }
