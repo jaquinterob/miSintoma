@@ -1,24 +1,28 @@
 package com.app.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Paciente{
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	private String documento;
+public class Paciente {
+	
+	private @Id 	@GeneratedValue  long documento;
+	@Column
 	private String nombre;
+	@Column
 	private String sexo;
+	@Column
 	private int edad;
+	@Column
 	private String telefono;
+	@Column
 	private String celular;
+	@Column
 	private String direccion;
 	
-	public Paciente(String documento, String nombre, String sexo, int edad, String telefono, String celular,
+	public Paciente(long documento, String nombre, String sexo, int edad, String telefono, String celular,
 			String direccion) {
 		this.documento = documento;
 		this.nombre = nombre;
@@ -29,11 +33,11 @@ public class Paciente{
 		this.direccion = direccion;
 	}
 
-	public String getDocumento() {
+	public long getDocumento() {
 		return documento;
 	}
 
-	public void setDocumento(String documento) {
+	public void setDocumento(long documento) {
 		this.documento = documento;
 	}
 
