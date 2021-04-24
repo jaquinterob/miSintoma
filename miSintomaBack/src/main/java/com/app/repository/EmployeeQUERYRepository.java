@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.app.entity.Employee;
 
-@RepositoryRestResource(collectionResourceRel = "employees", path = "employees")
+//@RepositoryRestResource(collectionResourceRel = "employees", path = "employees")
 public interface EmployeeQUERYRepository extends PagingAndSortingRepository<Employee, Long>{
 	List<Employee> findByFirstName(@Param("name") String name);
 }

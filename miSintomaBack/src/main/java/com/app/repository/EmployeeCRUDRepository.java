@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.app.entity.Employee;
 
 @Repository
-@RepositoryRestResource(collectionResourceRel = "employees", path = "employees")
+//@RepositoryRestResource(collectionResourceRel = "employees", path = "employees")
 public interface EmployeeCRUDRepository extends CrudRepository<Employee, Long>{
 	
 

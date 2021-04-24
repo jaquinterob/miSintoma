@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,17 +22,16 @@ import com.app.entity.Employees;
 import com.app.repository.EmployeeCRUDRepository;
 import com.app.repository.EmployeeQUERYRepository;
 
-
-
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path="/api/employeeCustomAPI")
+@RequestMapping("/api/employeeCustomAPI")
 public class EmployeeController 
 {
 	@Autowired
     private EmployeeCRUDRepository employeeRepository;
+	@Autowired
 	private EmployeeQUERYRepository employeeRepositoryQuery;
-
+/***
     //***Api Final Front
     @PostMapping(path= "/addemployee", consumes = "application/json", produces = "application/json")
 	public Employee addNewEmployeeApi(@RequestBody Employee employee) {
@@ -65,7 +65,7 @@ public class EmployeeController
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
     
-    
+    **/
     
     
     
