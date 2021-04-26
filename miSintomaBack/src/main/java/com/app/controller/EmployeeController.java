@@ -23,7 +23,7 @@ import com.app.repository.EmployeeCRUDRepository;
 import com.app.repository.EmployeeQUERYRepository;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*") //https://www.baeldung.com/spring-cors
 @RequestMapping("/api/employeeCustomAPI")
 public class EmployeeController 
 {
@@ -31,8 +31,10 @@ public class EmployeeController
     private EmployeeCRUDRepository employeeRepository;
 	@Autowired
 	private EmployeeQUERYRepository employeeRepositoryQuery;
-/***
+
+
     //***Api Final Front
+	@CrossOrigin(origins = "*")
     @PostMapping(path= "/addemployee", consumes = "application/json", produces = "application/json")
 	public Employee addNewEmployeeApi(@RequestBody Employee employee) {
         //add resource
@@ -41,6 +43,7 @@ public class EmployeeController
 	}
     
     //***Api Final Para FRONT
+	@CrossOrigin(origins = "*")
     @GetMapping(path= "/employeegetall", produces = "application/json")
     public Employees getAllEmployeesApi() 
     {
@@ -52,6 +55,7 @@ public class EmployeeController
     }
        
     //***Api Final Front
+	@CrossOrigin(origins = "*")
     @PostMapping(path= "/updateemployee", consumes = "application/json", produces = "application/json")
 	public Employee saveEmployeeApi(@RequestBody Employee employee) {
         //add resource
@@ -59,14 +63,15 @@ public class EmployeeController
 		return employee;
 	}
     //***Api Final Front
+	@CrossOrigin(origins = "*")
 	@PostMapping(path = "/employeeremove", consumes = "application/json")
 	public @ResponseBody ResponseEntity<String> deleteEmployeeApi(@RequestBody Employee employe) {
 		employeeRepository.deleteById(employe.getId());
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
     
-    **/
     
+   
     
     
 	
@@ -83,24 +88,19 @@ public class EmployeeController
     
     @PostMapping(path= "/employees", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> addEmployee(@RequestBody Employee employee) {       
-                
         //add resource
     	employee = employeeRepository.save(employee);
-        
         //Create resource location
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                                     .path("/{id}")
                                     .buildAndExpand(employee.getId())
                                     .toUri();
-
         //Send location in response
         return ResponseEntity.created(location).build();
     }
-   
-    
+      
     
 	/* Otras Formas  pero sin jUnit Testing*/   
-
 	@GetMapping(path = "/getallemployee")
 	public @ResponseBody Iterable<Employee> getAllEmployee() {
 		return employeeRepository.findAll();
@@ -125,7 +125,7 @@ public class EmployeeController
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 
-	 @GetMapping(path = "/getemployeebyname")
+	@GetMapping(path = "/getemployeebyname")
 	public @ResponseBody Iterable<Employee> getByName(@RequestParam String firstName) {
 		return employeeRepositoryQuery.findByFirstName(firstName);
 	}
@@ -135,9 +135,6 @@ public class EmployeeController
 		return employeeRepositoryQuery.findByFirstNameContaining(firstName);
 
 	} */
-    
-    
-    
-    
+      
     
 }

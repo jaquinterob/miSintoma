@@ -5,24 +5,28 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HolaMundo from "./components/HolaMundoExtendScript";
 import Button from "./components/Button";
-import AppMyComponentRest from "./components/GetGreeting";
+import Stateles from "./components/Stateless"
+//import AppMyComponentRest from "./components/GetGreeting";
+
+ReactDOM.render(
+  <React.StrictMode>
+      <Stateles />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
 /* 
 ReactDOM.render(
   <React.StrictMode>
-        <HolaMundo />
-        <Button text="Click" />
-        <AppMyComponentRest />
+       <HolaMundo />
+          <Button text="Click" />
+
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-*/
-ReactDOM.render(
-  <React.StrictMode>
         <AppMyComponentRest />
   </React.StrictMode>,
   document.getElementById('root')
-);
+);*/
 
 
 // If you want to start measuring performance in your app, pass a function

@@ -21,7 +21,7 @@ const GetGreeting = () => {
 
   return (
     <div className="container">
-      <h1>{greeting}</h1> 
+      <h1>{greeting[0].content}</h1> 
     </div>
   );
 };
