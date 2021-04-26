@@ -7,14 +7,19 @@ import HolaMundo from './components/HolaMundoExtendidoScript';
 import Presentacional from './components/PresentacionalConstante'
 import Statefull from './components/Stateful'
 import Stateless from './components/Stateless'
+import Button from './components/Button'
+import GetGreeting from './components/GetGreetings'
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Presentacional />
     <Statefull />
+    <GetGreeting />
+
     <Stateless />
     <HolaMundo />
+    <Button />
 
   </React.StrictMode>,
   document.getElementById('root')

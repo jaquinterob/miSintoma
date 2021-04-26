@@ -75,7 +75,7 @@ public class Paciente {
 		return "Paciente [id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", sexo=" + sexo + ", edad="
 				+ edad + ", telefono=" + telefono + ", celular=" + celular + ", direccion=" + direccion + "]";
 	}
-	public Paciente(Long id, long documento, String nombre, String sexo, int edad, String telefono, String celular,
+	public Paciente(long id, long documento, String nombre, String sexo, int edad, String telefono, String celular,
 			String direccion) {
 		super();
 		this.id = id;
@@ -87,6 +87,8 @@ public class Paciente {
 		this.celular = celular;
 		this.direccion = direccion;
 	}
+	
+
 	
 	public Paciente() {	}
 	

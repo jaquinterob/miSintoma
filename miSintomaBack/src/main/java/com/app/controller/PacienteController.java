@@ -40,7 +40,9 @@ public class PacienteController
 	@PostMapping(path= "/addPaciente", consumes = "application/json", produces = "application/json")
 	public Paciente addNewPacienteApi(@RequestBody Paciente paciente) {
         //add resource
+
      	paciente = pacienteRepository.save(paciente);
+     	System.out.println(paciente);
 		return paciente;
 	}	
 	
