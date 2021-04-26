@@ -9,12 +9,12 @@ const GetPaciente = () => {
     ];
     const [pacientes, setPacientes] = useState(PacienteData);
     //const [showLoading, setShowLoading] = useState(true);
+    const fechaData = async () => {
+        const result = await axios(apiUrl + 'api/pacientesCustomAPI/getAllPacientes');
+        setPacientes(result.data);
+    };
 
     useEffect(() => {
-        const fechaData = async () => {
-            const result = await axios(apiUrl + 'api/pacientesCustomAPI/getAllPacientes');
-            setPacientes(result.data);
-        };
         fechaData();
     }, []);
 
