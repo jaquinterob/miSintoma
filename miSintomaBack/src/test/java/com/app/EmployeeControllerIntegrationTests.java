@@ -17,7 +17,7 @@ import org.springframework.test.context.jdbc.Sql;
 import com.app.entity.Employee;
 import com.app.entity.Employees;
 
-
+/**
 @SpringBootTest(classes = MiSintomaBackApplication.class, 
 		webEnvironment = WebEnvironment.RANDOM_PORT)
 public class EmployeeControllerIntegrationTests 
@@ -50,4 +50,4 @@ public class EmployeeControllerIntegrationTests
 		assertEquals(201, responseEntity.getStatusCodeValue());
 	}
 
-}
+}*/

@@ -18,7 +18,7 @@
 		<java.version>11</java.version>
 
 		<!-- Pruebas JCOCO -->
-		<jacoco.version>0.8.3</jacoco.version>
+		<jacoco.version>0.8.7</jacoco.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
@@ -75,7 +75,7 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		
-		
+
 		
 		<!-- junit 5 -->
 		<dependency>

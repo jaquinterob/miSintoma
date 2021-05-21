@@ -7,21 +7,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class Employee {
-
-	private @Id @GeneratedValue(strategy=GenerationType.AUTO) Long id;
+	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO , generator="native")
+	@GenericGenerator(name = "native", strategy = "native")
+	private  Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
 
 	public Employee() {}
 
-	public Employee(String firstName, String lastName, String email) {
+
+
+	public Employee(Long id, String firstName, String lastName, String email) {
+		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
+
+
 
 	@Override
 	public boolean equals(Object o) {
@@ -36,7 +46,6 @@ public class Employee {
 
 	@Override
 	public int hashCode() {
-
 		return Objects.hash(id, firstName, lastName, email);
 	}
 

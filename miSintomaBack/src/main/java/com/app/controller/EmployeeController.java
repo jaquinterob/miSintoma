@@ -2,6 +2,7 @@ package com.app.controller;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -57,7 +58,7 @@ public class EmployeeController
     //***Api Final Front
 	@CrossOrigin(origins = "*")
     @PostMapping(path= "/updateemployee", consumes = "application/json", produces = "application/json")
-	public Employee saveEmployeeApi(@RequestBody Employee employee) {
+	public Employee updateEmployee(@RequestBody Employee employee) {
         //add resource
      	employeeRepository.save(employee);
 		return employee;
@@ -70,11 +71,7 @@ public class EmployeeController
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
     
-    
-   
-    
-    
-	
+      	
 	/* Otras Formas  pero Bajo jUnit Testing*/
 	@GetMapping(path="/employees", produces = "application/json")
     public Employees getEmployees() 
@@ -100,41 +97,5 @@ public class EmployeeController
     }
       
     
-	/* Otras Formas  pero sin jUnit Testing*/   
-	@GetMapping(path = "/getallemployee")
-	public @ResponseBody Iterable<Employee> getAllEmployee() {
-		return employeeRepository.findAll();
-	}
-
-	@GetMapping(path = "/addemployee")
-	public @ResponseBody String addNewEmployee(@RequestParam String ls_firstName, @RequestParam String ls_lastName, @RequestParam String ls_email) {
-		Employee employe = new Employee(ls_firstName,ls_lastName,ls_email);		
-		employeeRepository.save(employe);
-		return "Saved";
-	}
-
-	@PostMapping(path = "/updatemployee")
-	public @ResponseBody ResponseEntity<String> updateNewVehicle(@RequestBody Employee employe) {
-		employeeRepository.save(employe);
-		return new ResponseEntity<String>(HttpStatus.OK);
-	}
-
-	@PostMapping(path = "/removeemployee")
-	public @ResponseBody ResponseEntity<String> removeVehicle(@RequestBody Employee employe) {
-		employeeRepository.delete(employe);
-		return new ResponseEntity<String>(HttpStatus.OK);
-	}
-
-	@GetMapping(path = "/getemployeebyname")
-	public @ResponseBody Iterable<Employee> getByName(@RequestParam String firstName) {
-		return employeeRepositoryQuery.findByFirstName(firstName);
-	}
-
-	/*@GetMapping(path = "/findByemployeenamecontaining")
-	public @ResponseBody Iterable<Employee> findByNameContaining(@RequestParam String firstName) {
-		return employeeRepositoryQuery.findByFirstNameContaining(firstName);
-
-	} */
-      
     
 }
