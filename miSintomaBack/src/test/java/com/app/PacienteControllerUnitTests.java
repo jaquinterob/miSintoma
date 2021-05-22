@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.h2.command.dml.MergeUsing.When;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -119,12 +121,24 @@ public class PacienteControllerUnitTests
 	public void testRemovePaciente() 
 	{
 		
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 		
-		// Entonces Realizo la prueba si es verdadera
+		Paciente paciente = new Paciente();
+		paciente.setId((long)7);
+		
+		when(pacienteRepository.save(any(Paciente.class))).thenReturn(paciente);
+		
+		
 		Paciente pacienteToAdd = new Paciente((long) 10 ,8058270, "John Alexander Quintero", "M", 35,"2335026","3155246522","Envigado");
-		ResponseEntity<String> responseEntity = pacienteController.deletePacienteApi(pacienteToAdd);
-		System.out.println(responseEntity.getHeaders());
-		assertThat(responseEntity.getStatusCodeValue()).isEqualTo(200);
+		Paciente responseEntity = pacienteController.savePacienteApi(pacienteToAdd);
+		System.out.println(responseEntity);
+		
+		Paciente pacienteToDelete= new Paciente((long) 10 ,8058270, "John Alexander Quintero", "M", 35,"2335026","3155246522","Envigado");
+		ResponseEntity<String> responseHttpDelete = pacienteController.deletePacienteApi(pacienteToDelete);
+		
+		assertThat(responseHttpDelete.equals(HttpStatus.OK));
+		
 	}
 	
 	
