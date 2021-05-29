@@ -106,8 +106,7 @@ public class CovidVaccine implements Serializable{
 				", vaccineBatch=" + vaccineBatch +"]";
 	}
 	
-	public CovidVaccine(long id, String nameVaccine, String components, String laboratory, String expirationDate, String clinicalData, String vaccineBatch ) {
-		this.id = id;
+	public CovidVaccine(String nameVaccine, String components, String laboratory, String expirationDate, String clinicalData, String vaccineBatch ) {
 		this.nameVaccine = nameVaccine;
 		this.components = components;
 		this.laboratory = laboratory;
