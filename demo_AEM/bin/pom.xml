@@ -8,19 +8,15 @@
 		<version>2.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.demojl</groupId>
-	<artifactId>demo_jl</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>demo_AEM</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo_jl</name>
+	<name>demo_AEM</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
-	        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
