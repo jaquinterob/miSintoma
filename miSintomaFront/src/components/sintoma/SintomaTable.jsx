@@ -10,7 +10,7 @@ const SintomaTable = ({ sintomas, deleteSintoma, editRow }) => (
       </tr>
     </thead>
     <tbody>
-      {sintoma && sintomas.length > 0 ? (
+      {sintomas && sintomas.length > 0 ? (
         sintomas.map((sintoma) => (
           <tr key={sintoma.id.toString()}>
             <td>{sintoma.id}</td>
