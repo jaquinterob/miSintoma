@@ -1,31 +1,31 @@
 import React from "react";
-import './Header.scss';
+import "./Header.scss";
 import { Link } from "react-router-dom";
-//import "../assets/styles/components/Header.scss";
-//import logo from "../assets/static/logo.png";
+import localRoutes from "../../routes/localRoutes/localRoutes";
 
 const Header = () => (
   <header className="header">
-    <Link to="/">
+    <Link to={localRoutes.BASE}>
       <img className="header__img" src="{ logo }" alt="Logo" />
     </Link>
 
     <div className="header__menu">
       <div className="header__menu--profile">
-        <img src="{ userIcon }" alt="" />
+        <img src="{ userIcon }" alt="user_icon" />
         <p>Menu 1</p>
       </div>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <Link to={localRoutes.BASE}>Home</a>
         </li>
         <li>
-          <a href="/Sintoma">Link Vieja Escuela</a>
+          <Link to={localRoutes.BASE+localRoutes.SYMPTOM}>Link Vieja Escuela</a>
         </li>
         <li>
-          <Link to="/Sintoma">Sintoma</Link>
+          <Link to={localRoutes.BASE+localRoutes.SYMPTOM}>Sintoma</Link>
         </li>
       </ul>
     </div>
-  </header>);
-  export default Header;
+  </header>
+);
+export default Header;

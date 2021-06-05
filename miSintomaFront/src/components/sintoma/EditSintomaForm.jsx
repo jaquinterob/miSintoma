@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const EditSintomaForm = (props) => {
-  const [Sintoma, setSintoma] = useState(props.currentSintoma);
+const EditSintomaForm = ({ setEditing, currentSintoma, updateSintoma }) => {
+  const [Sintoma, setSintoma] = useState(currentSintoma);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -9,14 +9,14 @@ const EditSintomaForm = (props) => {
   };
 
   useEffect(() => {
-    setSintoma(props.currentSintoma);
-  }, [props]);
+    setSintoma(currentSintoma);
+  }, [currentSintoma]);
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        props.updateSintoma(sintoma.id, sintoma);
+        updateSintoma(sintoma.id, sintoma);
       }}
     >
       <label>Name Sintoma</label>
@@ -35,10 +35,7 @@ const EditSintomaForm = (props) => {
       />
 
       <button>Update sintoma</button>
-      <button
-        onClick={() => props.setEditing(false)}
-        className="button muted-button"
-      >
+      <button onClick={() => setEditing(false)} className="button muted-button">
         Cancel
       </button>
     </form>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const SintomaTable = (props) => (
+const SintomaTable = ({ sintomas, deleteSintoma, editRow }) => (
   <table>
     <thead>
       <tr>
@@ -10,8 +10,8 @@ const SintomaTable = (props) => (
       </tr>
     </thead>
     <tbody>
-    {undefined !== props.sintomas && props.sintomas.length > 0 ? (
-        props.sintomas.map((sintoma) => (
+      {sintoma && sintomas.length > 0 ? (
+        sintomas.map((sintoma) => (
           <tr key={sintoma.id.toString()}>
             <td>{sintoma.id}</td>
             <td>{sintoma.namesintoma}</td>
@@ -19,17 +19,16 @@ const SintomaTable = (props) => (
             <td>
               <button
                 onClick={() => {
-                  props.editRow(sintoma);
+                  editRow(sintoma);
                 }}
                 className="button muted-button"
               >
                 Edit
               </button>
               <button
-                onClick={() => props.deleteSintoma(sintoma.id)}
+                onClick={() => deleteSintoma(sintoma.id)}
                 className="button muted-button"
               >
-              
                 Delete
               </button>
             </td>
@@ -45,4 +44,3 @@ const SintomaTable = (props) => (
 );
 
 export default SintomaTable;
-

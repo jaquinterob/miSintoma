@@ -3,121 +3,94 @@ import "./Sintoma.scss";
 import SintomaTable from "./SintomaTable";
 import AddSintomaForm from "./AddSintomaForm";
 import EditSintomaForm from "./EditSintomaForm";
-import axios from "axios";
+import symptomData from "./utils/symptomData";
+import service from "../../service/service";
+import apiRoutes from "../../routes/apiRoutes/apiRoutes";
 
 const Sintoma = () => {
-  const SintomaData = [
-    { id: 1, namesintoma: "Fiebre", Descripcion: "aumento de la temperatura corporal" },
-    { id: 2, namesintoma: "Dolor de cabeza", Descripcion: "migrañas severas" },
-    { id: 3, namesintoma: "Malestar", Descripcion: "malestar general" },
-  ];
-  const [sintomas, setSintomas] = useState(SintomaData);
+  const [sintomas, setSintomas] = useState(symptomData);
   const [showLoading, setShowLoading] = useState(true);
-  const apiUrl = "http://localhost:8282/sintomaAPI/";
+  const [editing, setEditing] = useState(false);
+  const [currentSintoma, setCurrentSintoma] = useState({
+    id: null,
+    namesintoma: "",
+    descripcion: "",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(apiUrl + "sintomagetall");
+      const result = await service(
+        apiRoutes.SYMPTOM_BASE + apiRoutes.SYMPTOM_ALL
+      );
       setSintomas(result.data.sintomaList);
     };
     fetchData();
   }, []);
 
-
-
-  const addSintoma = (sintoma) => {
-    setShowLoading(true);
-    const data = {
-      id: sintoma.id,
-      namesintoma: sintoma.namesintoma,
-      descripcion: sintoma.descripcion,
-     
-    };
-    axios
-      .post(apiUrl + "addsintoma", data)
-      .then((result) => {
-        setSintomas([...sintomas, result.data]);
-      })
-      .catch((error) => setShowLoading(false));
-
-    /*
-    sintoma.id = sintomas.length + 1;
-    setSintomas([...sintomas, sintoma]);
-
-    const data = {
-      id: parseInt(sintoma.id),
-      namesintoma: sintoma.namesintoma,
-      descripcion: sintoma.descripcion,
-      
-    };
-
-    axios
-      .post(apiUrl, data)
-      .then((result) => {
-        //props.history.push('/show/' + result.data._id)
-        console.log("Consumo del Servicio 2");
-        console.log(result);
-      })
-      .catch((error) => setShowLoading(false));
-*/
+  const addSintoma = async ({ id, namesintoma, descripcion }) => {
+    try {
+      setShowLoading(true);
+      const response = await service(
+        apiRoutes.SYMPTOM_BASE + apiRoutes.SYMPTOM_ADD,
+        "POST",
+        { id, namesintoma, descripcion }
+      );
+      setSintomas([...sintomas, response.data]);
+      setShowLoading(false);
+    } catch (error) {
+      setShowLoading(false);
+      console.log(error);
+    }
   };
 
-  const deleteSintoma = (id) => {
-    setSintomas(sintomas.filter((sintoma) => sintoma.id !== id));
-    const data = {
-      id: id,
-      namesintoma: "",
-      descripcion: "",
-      
-    };
-    axios
-      .post(apiUrl + "sintomaremove", data)
-      .then((result) => {
-        //console.log(result);
-      })
-      .catch((error) => setShowLoading(false));
+  const deleteSintoma = async (id) => {
+    try {
+      setShowLoading(true);
+      setSintomas(sintomas.filter((sintoma) => sintoma.id !== id));
+      await service(apiRoutes.SYMPTOM_BASE + apiRoutes.SYMPTOM_REMOVE, "POST", {
+        id,
+      });
+      setShowLoading(false);
+    } catch (error) {
+      setShowLoading(false);
+      console.log(error);
+    }
   };
 
-  const [editing, setEditing] = useState(false);
-
-  const initialFormState = {
-    id: null,
-    namesintoma: "",
-    descripcion: "",
-    
-  };
-
-  const [currentSintoma, setCurrentSintoma] = useState(initialFormState);
-
-  const editRow = (sintoma) => {
+  const editRow = ({ id, namesintoma, descripcion }) => {
     setEditing(true);
     setCurrentSintoma({
-      id: sintoma.id,
-      namesintoma: sintoma.namesintoma,
-      descripcion: sintoma.descripcion,
-      
+      id,
+      namesintoma,
+      descripcion,
     });
   };
 
-  const updateSintoma = (id, updatedSintoma) => {
-    setEditing(false);
-    setSintomas(
-      sintomas.map((sintoma) =>
-        sintoma.id === id ? updatedSintoma : sintoma
-      )
-    );
-    const data = {
-      id: updatedSintoma.id,
-      namesintoma: updatedSintoma.namesintoma,
-      descripcion: updatedSintoma.descripcion,
-      
-    };
-    axios
-      .post(apiUrl + "updatesintoma", data)
-      .then((result) => {
-        //console.log("Updated");
-      })
-      .catch((error) => setShowLoading(false));
+  const updateSintoma = async (id, { namesintoma, descripcion }) => {
+    try {
+      setEditing(false);
+      setShowLoading(true);
+      setSintomas(
+        sintomas.map((sintoma) =>
+          sintoma.id === id
+            ? {
+                id,
+                namesintoma,
+                descripcion,
+              }
+            : sintoma
+        )
+      );
+      await service(apiRoutes.SYMPTOM_BASE + apiRoutes.SYMPTOM_UPDATE, "POST", {
+        id,
+        namesintoma,
+        descripcion,
+      });
+      setShowLoading(false);
+    } catch (error) {
+      setShowLoading(false);
+      console.log(error);
+    }
   };
 
   return (
@@ -126,19 +99,19 @@ const Sintoma = () => {
       <div className="flex-row">
         <div className="flex-large">
           {editing ? (
-            <div>
+            <>
               <h2>Edit Sintoma</h2>
               <EditSintomaForm
                 setEditing={setEditing}
                 currentSintoma={currentSintoma}
                 updateSintoma={updateSintoma}
               />
-            </div>
+            </>
           ) : (
-            <div>
+            <>
               <h2>Add sintoma</h2>
               <AddSintomaForm addSintoma={addSintoma} />
-            </div>
+            </>
           )}
         </div>
 
@@ -156,5 +129,3 @@ const Sintoma = () => {
 };
 
 export default Sintoma;
-
-

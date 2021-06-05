@@ -1,25 +1,21 @@
 import React, { useState } from "react";
 
-const AddSintomaForm = (props) => {
+const AddSintomaForm = ({ addSintoma }) => {
+  const INITIAL_FORM_STATE = { id: null, namesintoma: "", descripcion: "" };
+  const [sintoma, setSintoma] = useState(INITIAL_FORM_STATE);
 
-const initialFormState = { id: null, namesintoma: "", descripcion: ""};
-const [sintoma, setSintoma] = useState(initialFormState);
-
-const handleInputChange = (event) => {
-  const { name, value } = event.target;
-        //console.log(event);
-  setSintoma({ ...sintoma, [name]: value });
-};
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setSintoma({ ...sintoma, [name]: value });
+  };
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        if (!sintoma.namesintoma || !sintoma.descripcion)
-          return;
-
-        props.addSintoma(sintoma);
-        setSintoma(initialFormState);
+        if (!sintoma.namesintoma || !sintoma.descripcion) return;
+        addSintoma(sintoma);
+        setSintoma(INITIAL_FORM_STATE);
       }}
     >
       <label>Name Sintoma</label>
