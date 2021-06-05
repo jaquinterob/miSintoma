@@ -1,4 +1,6 @@
-export default localRoutes = {
+const localRoutes = {
   BASE: "/",
   SYMPTOM: "sintoma",
 };
+
+export default localRoutes;
