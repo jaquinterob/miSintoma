@@ -2,3 +2,7 @@ INSERT INTO COVIDVACCINE (nameVaccine, components, laboratory, expirationDate, c
   ("covid", "covid", "020322", "jassen", "clinical(2)", "lote"),
   ("covid", "covid", "020322", "jassen", "clinical(2)", "lote"),
   ("covid", "covid", "020322", "jassen", "clinical(2)", "lote");
+INSERT INTO SINTOMAS (namesintoma, descripcion) VALUES
+  ('Lo que sea', 'cualquier cosa'),
+  ('sintomass', 'mucho dolorr'),
+  ('aqui otro campo', 'otro mas');

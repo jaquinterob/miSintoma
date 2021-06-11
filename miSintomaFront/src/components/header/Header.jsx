@@ -27,6 +27,14 @@ const Header = () => (
         <li>
           <Link to={localRoutes.BASE + localRoutes.VACCINE}>Vacuna Covid</Link>
         </li>
+        <li>
+          <Link to={localRoutes.BASE + localRoutes.SYMPTOM}>
+            Link Vieja Escuela
+          </Link>
+        </li>
+        <li>
+          <Link to={localRoutes.BASE + localRoutes.SYMPTOM}>Sintoma</Link>
+        </li>
       </ul>
     </div>
   </header>
