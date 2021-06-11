@@ -27,6 +27,14 @@ module.exports = {
         },
       },
       {
+        test: /\.(s*)css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+      {
         test: /\.(png|gif|jpg)$/,
         use: [
           {
@@ -37,20 +45,15 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.(s*)css$/,
-        use: [
-          { loader: MiniCssExtractPlugin.loader },
-          "css-loader",
-          "sass-loader",
-        ],
-      },
+      
     ],
-  },
-  devServer: {
-    historyApiFallback: true,
+    
   },
 
+  devServer: {  
+      historyApiFallback: true,  
+  },
+  
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
