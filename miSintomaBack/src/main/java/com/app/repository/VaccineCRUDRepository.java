@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.entity.CovidVaccine;
 
+//
 @Repository
 @RepositoryRestResource(collectionResourceRel= "vaccine", path = "vaccine")
 public interface VaccineCRUDRepository extends CrudRepository<CovidVaccine, Long>{

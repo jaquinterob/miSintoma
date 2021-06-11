@@ -1,9 +1,5 @@
 import React from "react";
-import './Home.scss';
+import "./Home.scss";
 
-const Home = () => (
-    <div className="SinEspecificar">
-        HOLA SOY EL HOME
-    </div>
-)
+const Home = () => <div className="SinEspecificar">MI SINTOMA</div>;
 export default Home;

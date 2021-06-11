@@ -1,29 +1,31 @@
 import React from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
-//import "../assets/styles/components/Header.scss";
-//import logo from "../assets/static/logo.png";
+import logo from "../../assets/icon/vaccine.png";
+import localRoutes from "../../routes/localRoutes/localRoutes";
 
 const Header = () => (
   <header className="header">
-    {/* <Link to="/">
-      <img className="header__img" src="{ logo }" alt="Logo" />
-    </Link> */}
+    <Link to={localRoutes.BASE}>
+      <img className="header__img" src={ logo } alt="Logo" />
+    </Link>
 
     <div className="header__menu">
       <div className="header__menu--profile">
-        <img src="{ userIcon }" alt="" />
-        <p>Menu 1</p>
+        <img src="{ userIcon }" alt="user_icon" />
+        <p>Menu</p>
       </div>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <Link to={localRoutes.BASE}>Home</Link>
         </li>
         <li>
-          <a href="/covidVaccine">Link MiSintoma</a>
+          <Link to={localRoutes.BASE + localRoutes.VACCINE}>
+            Link MiSintoma
+          </Link>
         </li>
         <li>
-          <Link to="/covidVaccine">Vacuna Covid</Link>
+          <Link to={localRoutes.BASE + localRoutes.VACCINE}>Vacuna Covid</Link>
         </li>
       </ul>
     </div>

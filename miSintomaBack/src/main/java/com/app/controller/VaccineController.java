@@ -31,7 +31,7 @@ public class VaccineController {
 	private VaccineCRUDRepository vaccineRepository;
 	private VaccineQUERYRepository vaccineRepositoryQuery;
 	
-	
+	//
 	/*Bajo jUnit Testing*/
 	@GetMapping(path="/vaccine", produces = "application/json")
 	public Vaccine getVaccineList(){
