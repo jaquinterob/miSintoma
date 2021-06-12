@@ -1,5 +1,5 @@
 import Axios from "axios";
-const API_URL = "http://localhost:8282/covid-vaccineAPI/";
+const API_URL = "http://localhost:8282/api/";
 const service = (path, method, data) => {
   return Axios({ url: API_URL + path, method, data })
     .then((response) => response)

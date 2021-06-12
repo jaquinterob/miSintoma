@@ -7,14 +7,15 @@ const AddCovidVaccineForm = ({ addCovidVaccine }) => {
     components: "",
     laboratory: "",
     expirationDate: "",
-    clincialData: "",
+    clinicalData: "",
     vaccineBatch: "",
   };
   const [covidVaccine, setCovidVaccine] = useState(INITIAL_FORM_STATE);
 
   const handleInputChange = (event) => {
+    console.log(event.target);
     const { name, value } = event.target;
-    setEmployee({ ...covidVaccine, [name]: value });
+    setCovidVaccine({ ...covidVaccine, [name]: value });
   };
 
   return (
@@ -26,7 +27,7 @@ const AddCovidVaccineForm = ({ addCovidVaccine }) => {
           !covidVaccine.components ||
           !covidVaccine.laboratory ||
           !covidVaccine.expirationDate ||
-          !covidVaccine.clincialData ||
+          !covidVaccine.clinicalData ||
           !covidVaccine.vaccineBatch
         )
           return;
@@ -35,54 +36,73 @@ const AddCovidVaccineForm = ({ addCovidVaccine }) => {
         setCovidVaccine(INITIAL_FORM_STATE);
       }}
     >
-      <label>Name Vaccine</label>
-      <input
-        type="text"
-        name="NameVaccine"
-        value={covidVaccine.nameVaccine}
-        onChange={handleInputChange}
-      />
-      <label>Components</label>
-      <input
-        type="text"
-        name="components"
-        value={covidVaccine.components}
-        onChange={handleInputChange}
-      />
+      <div className="container">
+        <div className="row">
+          <div className="col-md">
+            <label className="mr-5" >Name Vaccine</label>
+            <input
+              type="text"
+              name="nameVaccine"
+              value={covidVaccine.nameVaccine}
+              onChange={handleInputChange}
+            />
+          </div>
 
-      <label>Laboratory</label>
-      <input
-        type="text"
-        name="Laboratory"
-        value={covidVaccine.laboratory}
-        onChange={handleInputChange}
-      />
+          <div className="col-md">
+            <label className="mr-5">Components</label>
+            <input
+              type="text"
+              name="components"
+              value={covidVaccine.components}
+              onChange={handleInputChange}
+            />
+          </div>
 
-      <label>Expiration Date</label>
-      <input
-        type="text"
-        name="expirationDate"
-        value={covidVaccine.expirationDate}
-        onChange={handleInputChange}
-      />
+          <div className="col-md">
+            <label className="mr-5">Laboratory</label>
+            <input
+              type="text"
+              name="laboratory"
+              value={covidVaccine.laboratory}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
 
-      <label>Clincial Data</label>
-      <input
-        type="text"
-        name="clinicalData"
-        value={covidVaccine.clincialData}
-        onChange={handleInputChange}
-      />
+        <div className="row mt-3">
+          <div className="col-md">
+            <label className="mr-5" >Expiration Date</label>
+            <input
+              type="text"
+              name="expirationDate"
+              value={covidVaccine.expirationDate}
+              onChange={handleInputChange}
+            />
+          </div>
 
-      <label>Vaccine Batch</label>
-      <input
-        type="text"
-        name="vaccineBatch"
-        value={covidVaccine.vaccineBatch}
-        onChange={handleInputChange}
-      />
+          <div className="col-md">
+            <label className="mr-5">Clinical Data</label>
+            <input
+              type="text"
+              name="clinicalData"
+              value={covidVaccine.clinicalData}
+              onChange={handleInputChange}
+            />
+          </div>
 
-      <button>Add new vaccine</button>
+          <div className="col-md">
+            <label className="mr-5">Vaccine Batch</label>
+            <input
+              type="text"
+              name="vaccineBatch"
+              value={covidVaccine.vaccineBatch}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+      </div>
+
+      <button className="btn btn-warning">Add new vaccine</button>
     </form>
   );
 };
