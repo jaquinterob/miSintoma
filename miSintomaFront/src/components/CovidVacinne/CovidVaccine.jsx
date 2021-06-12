@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./CovidVaccine.scss";
 import CovidVaccineTable from "../CovidVacinne/CovidVaccineTable";
 import CovidVaccineData from "./utils/CovidVaccineData";
@@ -138,6 +138,7 @@ const CovidVaccine = () => {
     }
   };
 
+  console.log("Entre pai")
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
