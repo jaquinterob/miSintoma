@@ -7,7 +7,7 @@ import localRoutes from "../../routes/localRoutes/localRoutes";
 const Header = () => (
   <header className="header">
     <Link to={localRoutes.BASE}>
-      <img className="header__img" src={ logo } alt="Logo" />
+      <img className="header__img" src={logo} alt="Logo" />
     </Link>
 
     <div className="header__menu">
@@ -20,20 +20,15 @@ const Header = () => (
           <Link to={localRoutes.BASE}>Home</Link>
         </li>
         <li>
-          <Link to={localRoutes.BASE + localRoutes.VACCINE}>
-            Link MiSintoma
-          </Link>
-        </li>
-        <li>
           <Link to={localRoutes.BASE + localRoutes.VACCINE}>Vacuna Covid</Link>
         </li>
         <li>
-          <Link to={localRoutes.BASE + localRoutes.SYMPTOM}>
-            Link Vieja Escuela
-          </Link>
+          <Link to={localRoutes.BASE + localRoutes.SYMPTOM}>Sintoma</Link>
         </li>
         <li>
-          <Link to={localRoutes.BASE + localRoutes.SYMPTOM}>Sintoma</Link>
+          <Link to={localRoutes.BASE + localRoutes.COMORBIDITY}>
+            Comorbilidad
+          </Link>
         </li>
       </ul>
     </div>

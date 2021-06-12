@@ -6,6 +6,7 @@ import CovidVaccine from "../components/CovidVacinne/CovidVaccine";
 import NotFound from "../components/notFound/NotFound";
 import Sintoma from "../components/sintoma/Sintoma";
 import localRoutes from "./localRoutes/localRoutes";
+import Comorbidity from "../components/comorbidity/comorbidity";
 
 const AppRoutes = () => (
   <BrowserRouter>
@@ -15,11 +16,17 @@ const AppRoutes = () => (
         <Route
           exact
           path={localRoutes.BASE + localRoutes.VACCINE}
-          component={CovidVaccine}/>
+          component={CovidVaccine}
+        />
         <Route
           exact
           path={localRoutes.BASE + localRoutes.SYMPTOM}
           component={Sintoma}
+        />
+        <Route
+          exact
+          path={localRoutes.BASE + localRoutes.COMORBIDITY}
+          component={Comorbidity}
         />
         <Route component={NotFound} />
       </Switch>
