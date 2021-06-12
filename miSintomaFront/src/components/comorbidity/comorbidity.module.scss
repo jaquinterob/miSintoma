@@ -1,0 +1,35 @@
+.title {
+  margin: 0 0 1% 10%;
+}
+
+.components {
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  width: 50%;
+  padding: 2%;
+  margin-bottom: 2%;
+}
+
+.cardRow {
+  width: 100%;
+  display: grid;
+  padding: 2%;
+  margin-bottom: 2%;
+  grid-template-columns: 23% 5% 23% 20% 20%;
+  column-gap: 2%;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 100%;
+  row-gap: 3%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 48.9%);
+  column-gap: 2%;
+}
