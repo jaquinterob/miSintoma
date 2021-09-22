@@ -73,7 +73,7 @@ public class EmployeeController
     
       	
 	/* Otras Formas  pero Bajo jUnit Testing*/
-	@GetMapping(path="/employees", produces = "application/json")
+	@GetMapping(path="	", produces = "application/json")
     public Employees getEmployees() 
     {
 		Employees response = new Employees();
