@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const GetGreeting = () => {
-  const apiUrl = "http://localhost:8282/";
+  const apiUrl = "http://localhost:8080/";
 
   const GreetingData = [
     { id: 1, content: "Sin Contenido" },

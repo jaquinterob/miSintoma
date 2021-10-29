@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
 import HolaMundo from "./components/HolaMundoExtendScript";
-import Button from "./components/Button";
-import Stateles from "./components/Stateless"
+
 //import AppMyComponentRest from "./components/GetGreeting";
 
 ReactDOM.render(
